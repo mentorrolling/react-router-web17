@@ -1,12 +1,18 @@
-import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBarApp = () => {
+  const rutas = [
+    { id: 1, path: "/", title: "Inicio" },
+    { id: 2, path: "about", title: "Sobre nosotros" },
+    { id: 3, path: "contact", title: "Contacto" },
+  ];
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+      <div className="container">
+        <Link className="navbar-brand" to="/">
+          BiblioTech
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -20,15 +26,23 @@ const NavBarApp = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
+            {rutas.map((ruta) => (
+              <li className="nav-item" key={ruta.id}>
+                <NavLink
+                  className="nav-link"
+                  aria-current="page"
+                  to={ruta.path}
+                >
+                  {ruta.title}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/about">
-                About
-              </a>
+              <Link to="login" className="nav-link">
+                Cerrar sesión
+              </Link>
             </li>
           </ul>
         </div>
