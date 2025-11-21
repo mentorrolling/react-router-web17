@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const LoginScreen = () => {
+  const { logIn, logOut } = useContext(UserContext);
   const navigate = useNavigate();
   const [formValue, setFormValue] = useState({
     correo: "",
     pass: "",
   });
+
+  //Cuando se monta esta vista se desloguea el usuario
+  useEffect(() => {
+    logOut();
+  }, []);
 
   const handleChange = ({ target }) => {
     setFormValue({ ...formValue, [target.name]: target.value });
@@ -16,6 +23,7 @@ const LoginScreen = () => {
     e.preventDefault();
     if (formValue.correo && formValue.pass) {
       localStorage.setItem("user", JSON.stringify(formValue));
+      logIn(formValue.correo);
       navigate("/");
     } else {
       alert("Usuario o contraseña vacios");
