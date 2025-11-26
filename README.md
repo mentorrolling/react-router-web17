@@ -1,18 +1,66 @@
-# React + Vite
+# React Router Web17
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación de ejemplo creada con React y Vite, que utiliza React Router para la navegación entre diferentes vistas. Forma parte de la cursada de RollingCode School.
 
-Currently, two official plugins are available:
+## Estructura del proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+src/
+	App.jsx
+	main.jsx
+	assets/
+	components/
+		NavBarApp.jsx
+	css/
+		estilos.css
+	layout/
+		ViewsLayout.jsx
+	routes/
+		RoutesPrincipal.jsx
+	views/
+		AboutScreen.jsx
+		Error404Screen.jsx
+		HomeScreen.jsx
+		LoginScreen.jsx
+```
 
-## React Compiler
+## Instalación
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+1. Clona el repositorio:
+   ```zsh
+   git clone https://github.com/mentorrolling/react-router-web17.git
+   cd react-router-web17
+   ```
+2. Instala las dependencias:
+   ```zsh
+   npm install
+   ```
 
-Note: This will impact Vite dev & build performances.
+## Uso
 
-## Expanding the ESLint configuration
+Para iniciar la aplicación en modo desarrollo:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```zsh
+npm run dev
+```
+
+Abre [http://localhost:5173](http://localhost:5173) en tu navegador para ver la app.
+
+## Tecnologías utilizadas
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [React Router](https://reactrouter.com/)
+
+## Funcionalidades
+
+- Navegación entre Home, About, Login y manejo de rutas no encontradas (Error404).
+- Barra de navegación dinámica.
+
+## Autor
+
+RollingCode School - Web17
+
+## Licencia
+
+Este proyecto se distribuye bajo la licencia MIT.
