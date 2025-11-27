@@ -6,20 +6,11 @@ const NavBarApp = () => {
     { id: 2, path: "about", title: "Sobre nosotros" },
     { id: 3, path: "contact", title: "Contacto" },
   ];
-<<<<<<< HEAD
-
-  return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container">
-        <Link className="navbar-brand" to="/">
-          BiblioTech
-=======
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Navbar
->>>>>>> dev
         </Link>
         <button
           className="navbar-toggler"
@@ -34,16 +25,6 @@ const NavBarApp = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-<<<<<<< HEAD
-            {rutas.map((ruta) => (
-              <li className="nav-item" key={ruta.id}>
-                <NavLink
-                  className="nav-link"
-                  aria-current="page"
-                  to={ruta.path}
-                >
-                  {ruta.title}
-=======
             {rutas.map(({ path, id, title }) => (
               <li className="nav-item" key={id}>
                 <NavLink
@@ -54,7 +35,6 @@ const NavBarApp = () => {
                   to={path}
                 >
                   {title}
->>>>>>> dev
                 </NavLink>
               </li>
             ))}

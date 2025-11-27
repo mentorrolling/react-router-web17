@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import { Route, Routes } from "react-router-dom";
-import ViewsLayout from "../layout/ViewsLayout";
-import HomeScreen from "../views/HomeScreen";
-import AboutScreen from "../views/AboutScreen";
-import Error404Screen from "../views/Error404Screen";
-import LoginScreen from "../views/LoginScreen";
-=======
 import { Routes, Route } from "react-router-dom";
 import HomeScreen from "../views/HomeScreen";
 import PagesLayout from "../layout/PagesLayout";
@@ -14,16 +6,10 @@ import Error404Screen from "../views/Error404Screen";
 import LoginScreen from "../views/LoginScreen";
 import ProductScreen from "../views/ProductScreen";
 import ProtectedRoutes from "./ProtectedRoutes";
->>>>>>> dev
 
 const RoutesPrincipal = () => {
   return (
     <Routes>
-<<<<<<< HEAD
-      <Route path="/" element={<ViewsLayout />}>
-        <Route index element={<HomeScreen />} />
-        <Route path="about" element={<AboutScreen />} />
-=======
       <Route
         path="/"
         element={
@@ -36,7 +22,6 @@ const RoutesPrincipal = () => {
         <Route path="about" element={<AboutScreen />} />
         <Route path="product/:id" element={<ProductScreen />} />
         {/* localhost:9001/product/12 */}
->>>>>>> dev
         <Route path="*" element={<Error404Screen />} />
       </Route>
       <Route path="login" element={<LoginScreen />} />
