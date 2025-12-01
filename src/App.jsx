@@ -9,8 +9,8 @@ import { UserProvider } from "./context/UserContext";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <UserProvider>
+    <UserProvider>
+      <BrowserRouter>
         <RoutesPrincipal />
         {/* <NavBarApp /> */}
         {/* <Routes>
@@ -20,8 +20,8 @@ const App = () => {
           <Route path="*" element={<Error404Screen />} />
         </Route>
       </Routes> */}
-      </UserProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </UserProvider>
   );
 };
 

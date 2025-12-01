@@ -22,7 +22,6 @@ const LoginScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formValue.correo && formValue.pass) {
-      localStorage.setItem("user", JSON.stringify(formValue));
       logIn(formValue.correo);
       navigate("/");
     } else {
