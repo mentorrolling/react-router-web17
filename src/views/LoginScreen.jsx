@@ -1,25 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { useForm } from "react-hook-form";
 
 const LoginScreen = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { logIn, logOut } = useContext(UserContext);
+
   const navigate = useNavigate();
-  const [formValue, setFormValue] = useState({
-    correo: "",
-    pass: "",
-  });
+  // const [formValue, setFormValue] = useState({
+  //   correo: "",
+  //   pass: "",
+  // });
 
   useEffect(() => {
     localStorage.removeItem("user");
+    logOut();
   }, []);
 
-  const handleChange = ({ target }) => {
-    setFormValue({ ...formValue, [target.name]: target.value });
-  };
+  // const handleChange = ({ target }) => {
+  //   setFormValue({ ...formValue, [target.name]: target.value });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formValue.correo && formValue.pass) {
-      localStorage.setItem("user", JSON.stringify(formValue));
+  const guardarUsuario = (data) => {
+    console.log(data);
+    // e.preventDefault();
+    if (data.correo && data.pass) {
+      localStorage.setItem("user", JSON.stringify(data));
+      logIn(data.correo, "Usuario");
+
       navigate("/");
     } else {
       alert("Usuario o contraseña vacios");
@@ -32,26 +46,47 @@ const LoginScreen = () => {
           <section className="text-center my-5">
             <h1>Inicio de sesión</h1>
           </section>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(guardarUsuario)} noValidate>
             <div className="mb-3">
               <label className="fw-bold">Correo</label>
               <input
                 type="email"
                 className="form-control"
-                name="correo"
-                value={formValue.correo}
-                onChange={handleChange}
+                {...register("correo", {
+                  required: "El correo es obligatorio",
+                  pattern: {
+                    value: /^\w+@\w+\.\w{2,4}$/i,
+                    message: "No es un correo válido",
+                  },
+                })}
+                // name="correo"
+                // value={formValue.correo}
+                // onChange={handleChange}
               />
+              {errors.correo && (
+                <p className="text-danger">{errors.correo.message}</p>
+              )}
             </div>
             <div className="mb-3">
               <label className="fw-bold">Contraseña</label>
               <input
                 type="password"
                 className="form-control"
-                name="pass"
-                value={formValue.pass}
-                onChange={handleChange}
+                {...register("pass", {
+                  required: "La contraseña es obligatoria",
+                  pattern: {
+                    value: /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/,
+                    message:
+                      "La contraseña debe tener al menos una mayúscula, un número, un símbolo y mínimo 8 caracteres.",
+                  },
+                })}
+                // name="pass"
+                // value={formValue.pass}
+                // onChange={handleChange}
               />
+              {errors.pass && (
+                <p className="text-danger">{errors.pass.message}</p>
+              )}
             </div>
             <div className="mb-3 d-grid">
               <button className="btn btn-success">Iniciar</button>

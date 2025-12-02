@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
 
 const NavBarApp = () => {
+  const { user } = useContext(UserContext);
   const rutas = [
     { id: 1, path: "/", title: "Inicio" },
     { id: 2, path: "about", title: "Sobre nosotros" },
@@ -42,7 +45,7 @@ const NavBarApp = () => {
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <Link to="login" className="nav-link">
-                Cerrar sesión
+                Cerrar sesión {user.name}
               </Link>
             </li>
           </ul>

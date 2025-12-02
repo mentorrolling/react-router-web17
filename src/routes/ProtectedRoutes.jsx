@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const ProtectedRoutes = ({ children }) => {
-  const usuario = JSON.parse(localStorage.getItem("user")) || null;
+  const { user } = useContext(UserContext);
 
-  if (usuario) {
+  // const usuario = JSON.parse(localStorage.getItem("user")) || null;
+
+  if (user.isLogin) {
     return children;
   } else {
     //  redireccionar a LOgin
